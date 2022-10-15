@@ -1,0 +1,11 @@
+.py-5
+  .header.d-flex.justify-content-between
+    .title
+      %h1 Quotes
+    .new
+      = link_to "New quote", new_quote_path, class: "btn btn-primary"
+  %hr
+
+  .quotes
+    = render @quotes
+
