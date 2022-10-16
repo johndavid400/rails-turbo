@@ -1,6 +1,17 @@
-.quote.d-flex.justify-content-between.border.border-secondary.rounded.p-3.mb-3
-  .name
-    = link_to quote.name, quote_path(quote)
-  .actions
-    = link_to "Delete", quote_path(quote), method: :delete, class: "btn btn-outline-danger btn-sm"
-    = link_to "Edit", edit_quote_path(quote), class: "btn btn-outline-primary btn-sm"
+= turbo_frame_tag quote do
+  .quote.d-flex.justify-content-between.border.border-secondary.rounded.p-3.mb-3
+    .name
+      = link_to quote.name,
+        quote,
+        data: { turbo_frame: quote }
+    .actions.d-flex
+      = button_to "Delete",
+        quote_path(quote),
+        method: :delete,
+        class: 'btn btn-danger btn-sm me-2',
+        form: { data: { turbo_frame: "_top" } }
+      = link_to "Edit",
+        edit_quote_path(quote),
+        class: "btn btn-outline-primary btn-sm",
+        data: { turbo_frame: quote }
+

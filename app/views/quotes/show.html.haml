@@ -1,4 +1,8 @@
 .quotes
-  = link_to sanitize("&larr; Back to quotes"), quotes_path
-  .header
-    %h1= @quote.name
+  = turbo_frame_tag @quote do
+    .header.d-flex.justify-content-between.border.border-secondary.rounded.p-3.mb-3
+      %h5
+        = link_to quotes_path do
+          %i.quote-name
+            = "'#{@quote.name}'"
+      = link_to 'Back', quotes_path, class: 'btn btn-light btn-sm'

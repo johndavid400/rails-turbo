@@ -3,9 +3,12 @@
     .title
       %h1 Quotes
     .new
-      = link_to "New quote", new_quote_path, class: "btn btn-primary"
+      = link_to 'New quote', new_quote_path, class: 'btn btn-primary', data: { turbo_frame: 'new_quote' }
   %hr
 
   .quotes
-    = render @quotes
-
+    = turbo_frame_tag 'quotes' do
+      .new-quote
+        = turbo_frame_tag 'new_quote' do
+          %div
+      = render @quotes

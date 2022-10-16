@@ -3,5 +3,10 @@
     .error-message
       = quote.errors.full_messages.to_sentence.capitalize
 
-  = f.input :name, input_html: { autofocus: true }
-  = f.submit class: "btn btn--secondary"
+  .quote.d-flex.flex-column
+    .form.d-flex.flex-row.justify-content-between
+      .input
+        = f.input :name, input_html: { autofocus: true }, class: 'edit-field'
+      .action
+        = f.submit class: "btn btn-success btn-sm", data: { turbo_frame: 'quotes' }
+        = link_to 'Cancel', '', class: 'btn btn-sm btn-outline-secondary'
